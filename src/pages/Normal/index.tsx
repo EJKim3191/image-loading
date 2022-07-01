@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
+import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 type RandomImageType = {
     id: string;
     author: string;
@@ -12,11 +12,13 @@ type RandomImageType = {
 
 const Normal = () =>{
     const [randomImageList, setRandomImageList] = useState<RandomImageType[]>([])
+    const ref = useInfiniteScroll<HTMLDivElement>(()=>{
+        getRandomImages();
+    });
 
     const getRandomImages = async () =>{
         try {
             const { data } = await axios.get('https://picsum.photos/v2/list?page=1&limit=10');
-            console.log(data)
             setRandomImageList((prev) => prev.concat(data));
         } catch (error) {
             console.log(error);
@@ -25,14 +27,13 @@ const Normal = () =>{
     }
 
     useEffect(() => {
-        getRandomImages();
+        // getRandomImages();
         return () => {
     
         }
     }, [])
     
     useEffect(()=>{
-        console.log(randomImageList)
     },[randomImageList])
 
     return (
@@ -51,6 +52,9 @@ const Normal = () =>{
                     </>
                 )
             })}
+            <div ref={ref}>
+                마지막 부분
+            </div>
         </div>
     )
 }
