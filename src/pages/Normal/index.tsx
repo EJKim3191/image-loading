@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 type RandomImageType = {
     id: string;
@@ -25,17 +25,7 @@ const Normal = () =>{
         }
 
     }
-
-    useEffect(() => {
-        // getRandomImages();
-        return () => {
     
-        }
-    }, [])
-    
-    useEffect(()=>{
-    },[randomImageList])
-
     return (
         <div>
             <h1>노멀 이미지 로딩</h1>

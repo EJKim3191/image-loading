@@ -7,6 +7,8 @@ const Main = () =>{
         <div>
             <h1>이미지 로딩 성능 비교</h1>
             <h2><a onClick={()=>navigate("/normal")}>노멀 이미지 로딩</a></h2>
+            <h2><a onClick={()=>navigate("/lazy")}>CSS 속성 Lazy 로딩</a></h2>
+            <h2><a onClick={()=>navigate("/ObserverAPILoading")}>ObserverAPILoading 로딩</a></h2>
         </div>
     )
 }
